@@ -1,6 +1,4 @@
 const {Builder, By} = require("selenium-webdriver")
-const chrome = require("selenium-webdriver/chrome")
-
 
 
 async function startDriver()
@@ -9,11 +7,11 @@ async function startDriver()
     await driver.get("https://2ip.ru/");
     setTimeout(async () => console.log(await driver.getTitle()), 5000)
 
-    setTimeout(seachIPText, 7000, driver)
-    setTimeout(quitDriver, 10000, driver)
+    setTimeout(searchIPText, 5500, driver)
+    setTimeout(quitDriver, 6000, driver)
 
 }
-async function seachIPText(driver)
+async function searchIPText(driver)
 {
     try
     {
