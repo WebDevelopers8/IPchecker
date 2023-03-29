@@ -9,6 +9,7 @@
   "author": "WebCore",
   "license": "ISC",
   "dependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "selenium-webdriver": "^4.8.2"
   }
 }
