@@ -1,29 +1,27 @@
-const {Builder, By} = require("selenium-webdriver")
+const TelegramBot = require('node-telegram-bot-api');
+const token = "5729919373:AAF4fcQGENUlHnKPzV-m48d5xyejZeFvD5o";
+const bot = new TelegramBot(token, {polling: true});
 
+const ButtonList = require('./buttons/button-list')
+const DriverController = require('./controllers/DriverController')
 
-async function startDriver()
-{
-    const driver = await new Builder().forBrowser('chrome').build()
-    await driver.get("https://2ip.ru/");
-    setTimeout(async () => console.log(await driver.getTitle()), 5000)
+bot.setMyCommands([
+    {command: "/start", description: "Вернуться в начало"},
+])
 
-    setTimeout(searchIPText, 5500, driver)
-    setTimeout(quitDriver, 6000, driver)
+const start = async () => {
+    bot.on('message', async (msg) =>{
+        const chatId = msg.chat.id
+        const text = msg.text;
 
-}
-async function searchIPText(driver)
-{
-    try
-    {
-        let ipAdress = await driver.findElement(By.css('.ip span')).getText()
-        console.log(ipAdress)
-    }catch (e) {
-        console.log(e)
-    }
-}
-async function quitDriver(driver)
-{
-    await driver.quit()
+        if(text === '/start'){
+            await bot.sendMessage(chatId, "Вас приветствует бот по проверке ip адреса через веб драйвера", ButtonList.keyboard)
+        }
+        if(text === "Запустить проверку IP")
+        {
+            await DriverController.startDriver(bot,chatId)
+        }
+    })
 }
 
-startDriver();
+start()
