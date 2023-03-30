@@ -4,6 +4,7 @@ class ButtonList{
         reply_markup: {
             keyboard: [
                 [{text: "Запустить проверку IP"}],
+                [{text: 'Запустить проверку IP с прокси'}]
             ],
         },
     }

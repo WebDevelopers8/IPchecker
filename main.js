@@ -21,6 +21,10 @@ const start = async () => {
         {
             await DriverController.startDriver(bot,chatId)
         }
+        if(text === "Запустить проверку IP с прокси")
+        {
+            await DriverController.startProxyDriver(bot,chatId)
+        }
     })
 }
 
