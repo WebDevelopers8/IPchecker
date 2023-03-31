@@ -19,11 +19,11 @@ const start = async () => {
         }
         if(text === "Запустить проверку IP")
         {
-            await DriverController.startDriver(bot,chatId)
+            await DriverController.startDriver(bot,chatId, false)
         }
         if(text === "Запустить проверку IP с прокси")
         {
-            await DriverController.startProxyDriver(bot,chatId)
+            await DriverController.startDriver(bot,chatId, true)
         }
     })
 }
